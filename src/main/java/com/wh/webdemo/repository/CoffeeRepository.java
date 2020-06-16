@@ -3,6 +3,8 @@ package com.wh.webdemo.repository;
 import com.wh.webdemo.model.Coffee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @author 28476 wanghao <a href="hao.wang@1hai.cn">Contact me.</a>
  * @version 1.0
@@ -11,4 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface CoffeeRepository extends JpaRepository<Coffee, Long> {
+    List<Coffee> findByNameInOrderById(List<String> list);
 }

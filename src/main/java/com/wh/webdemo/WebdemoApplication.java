@@ -14,6 +14,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Optional;
@@ -23,6 +24,7 @@ import java.util.function.Consumer;
 //todo 事务管理 ？？
 @EnableJpaRepositories
 @SpringBootApplication
+@EnableAspectJAutoProxy
 @EnableCaching(proxyTargetClass = true)
 public class WebdemoApplication implements ApplicationRunner {
 

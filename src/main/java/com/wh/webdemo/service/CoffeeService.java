@@ -51,4 +51,12 @@ public class CoffeeService {
         log.info("Coffee Found: {}", coffee);
         return coffee;
     }
+
+    public List<Coffee> getCoffeeByName(List<String> names) {
+        return coffeeRepository.findByNameInOrderById(names);
+    }
+
+    public List<Coffee> getAllCoffee() {
+        return coffeeRepository.findAll();
+    }
 }
