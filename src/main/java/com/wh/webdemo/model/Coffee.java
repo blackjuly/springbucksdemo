@@ -1,5 +1,6 @@
 package com.wh.webdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.joda.money.Money;
@@ -21,9 +22,11 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+//@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 public class Coffee extends BaseEntity implements Serializable {
     private String name;
     @Type(type = "org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
             parameters = {@org.hibernate.annotations.Parameter(name = "currencyCode", value = "CNY")})
     private Money price;
+
 }

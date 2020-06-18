@@ -45,4 +45,8 @@ public class CoffeeOrderService {
        log.info("Updated Order: {}", order);
        return true;
    }
+
+    public CoffeeOrder get(Long id) {
+        return orderRepository.getOne(id);
+    }
 }

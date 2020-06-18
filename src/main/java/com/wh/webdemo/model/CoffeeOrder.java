@@ -1,5 +1,6 @@
 package com.wh.webdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+//@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 public class CoffeeOrder extends BaseEntity implements Serializable {
     private String customer;
     @ManyToMany

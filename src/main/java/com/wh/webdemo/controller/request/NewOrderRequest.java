@@ -22,4 +22,12 @@ public class NewOrderRequest {
     public String getCustomer() {
         return customer;
     }
+
+    public void setItems(List<String> items) {
+        this.items = items;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
 }

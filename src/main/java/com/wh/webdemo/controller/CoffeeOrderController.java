@@ -7,9 +7,9 @@ import com.wh.webdemo.service.CoffeeOrderService;
 import com.wh.webdemo.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 28476 wanghao <a href="hao.wang@1hai.cn">Contact me.</a>
@@ -26,9 +26,17 @@ public class CoffeeOrderController {
     @Autowired
     private CoffeeOrderService orderService;
 
+    @GetMapping("/{id}")
+    public CoffeeOrder getOrder(@PathVariable("id") Long id){
+        return orderService.get(id);
+    }
+
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public CoffeeOrder create(@RequestBody NewOrderRequest newOrder){
         log.info("receive new order {}",newOrder);
         Coffee[] coffeeList = coffeeService.getCoffeeByName(newOrder.getItems()).toArray(new Coffee[]{});
-        return orderService.createOrder(newOrder.getCustomer(),coffeeList);
+        final CoffeeOrder order = orderService.createOrder(newOrder.getCustomer(), coffeeList);
+        return order;
     }
 }

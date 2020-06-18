@@ -1,8 +1,10 @@
 package com.wh.webdemo.service;
 
+import com.wh.webdemo.controller.request.NewCoffeeRequest;
 import com.wh.webdemo.model.Coffee;
 import com.wh.webdemo.repository.CoffeeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -58,5 +60,21 @@ public class CoffeeService {
 
     public List<Coffee> getAllCoffee() {
         return coffeeRepository.findAll();
+    }
+
+    public Coffee getCoffee(String name) {
+        return coffeeRepository.getByName(name);
+    }
+
+    public Coffee getCoffee(Long id) {
+        return coffeeRepository.getOne(id);
+    }
+
+    public Coffee saveCoffee(NewCoffeeRequest newCoffee) {
+        return coffeeRepository.save(new Coffee(newCoffee.getName(),newCoffee.getPrice()));
+    }
+
+    public Coffee saveCoffee(String s, Money cny) {
+        return coffeeRepository.save(new Coffee(s,cny));
     }
 }
