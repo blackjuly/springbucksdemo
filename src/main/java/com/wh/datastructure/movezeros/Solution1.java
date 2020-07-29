@@ -6,13 +6,13 @@ package com.wh.datastructure.movezeros;
  * @date 2020/07/27 15:05
  * desc :
  */
-public class Solution {
+public class Solution1 {
     public  void moveZeroes(int[] nums) {
-     int j = 0;
+        int j = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0){
-                nums[j] = nums[i];
-                if (i != j){
+                if (i > j){
+                    nums[j] = nums[i];
                     nums[i] = 0;
                 }
                 j++;
@@ -24,7 +24,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int nums[] = {1,1,0,3,12};
-        new Solution().moveZeroes(nums);
+       // int nums[] = {0,1,0,3,12};
+        int nums[] = {0,0,0,3,16};
+        new Solution1().moveZeroes(nums);
     }
 }
