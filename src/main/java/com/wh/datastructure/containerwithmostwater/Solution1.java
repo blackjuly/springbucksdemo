@@ -11,7 +11,8 @@ public class Solution1 {
         int max = 0;
         for (int i = 0; i < height.length-1; i++) {
             for (int j = i+1; j < height.length; j++) {
-                //max = Math.max(max,(i-))
+                int minHeight = Math.min(height[i], height[j]);
+                max = Math.max(max,(j-i)*minHeight);
             }
         }
         return max;
