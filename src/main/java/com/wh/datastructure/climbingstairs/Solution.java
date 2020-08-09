@@ -6,11 +6,18 @@ package com.wh.datastructure.climbingstairs;
  */
 public class Solution {
     public int climbStairs(int n) {
-        return 0;
+        if (n <= 2) return n;
+        int a = 1,b = 2,c = 3;
+        for (int i = 3; i < n+1 ;++i){
+            c = a+b;
+            a = b;
+            b = c;
+        }
+        return c;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(new Solution().climbStairs(3));
     }
 
 
